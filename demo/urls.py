@@ -23,5 +23,6 @@ urlpatterns = [
     # path("", include("home.urls")),
     path("", views.home),
     path("home", views.home),
+    path("about", views.about),
 
 ]
