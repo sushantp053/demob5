@@ -8,3 +8,9 @@ class Student(models.Model):
     pass_year = models.IntegerField()
     mobile = models.IntegerField()
     email = models.CharField(max_length=50)
+
+class Department(models.Model):
+    name = models.CharField(max_length=50)
+    hod = models.CharField(max_length=50)
+    hod_mobile = models.IntegerField()
+    hod_email = models.CharField(max_length=50)
