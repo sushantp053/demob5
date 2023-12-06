@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student</title>
+  </head>
+  <!-- this is an html comment -->
+  <body>
+    {% comment %}{{ student }} this is an django comment {% endcomment %}
+    <table>
+      <tr>
+        <th>Roll No</th>
+        <th>Student Name</th>
+        <th>City</th>
+        <th>Mobile</th>
+      </tr>
+      {% for s in stud %} {% if s.roll != 2 %}
+      <tr>
+        <td>{{ s.roll }}</td>
+        <td>{{ s.name }}</td>
+        <td>{{ s.city }}</td>
+        <td>{{ s.mobile }}</td>
+      </tr>
+      {% endif %} {% endfor %}
+    </table>
+  </body>
+</html>
