@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Student</title>
+    <link rel="stylesheet" href="static/home/css/student.css" />
   </head>
   <!-- this is an html comment -->
   <body>
@@ -15,14 +16,14 @@
         <th>City</th>
         <th>Mobile</th>
       </tr>
-      {% for s in stud %} {% if s.roll != 2 %}
+      {% for s in stud %}
       <tr>
         <td>{{ s.roll }}</td>
         <td>{{ s.name }}</td>
         <td>{{ s.city }}</td>
         <td>{{ s.mobile }}</td>
       </tr>
-      {% endif %} {% endfor %}
+      {% endfor %}
     </table>
   </body>
 </html>
