@@ -28,7 +28,8 @@ def student(request):
 
 def addStudent(request):
 
-    return render(request, "addstudent.html")
+    d = Department.objects.all()
+    return render(request, "addstudent.html", {'departments': d})
 
 
 def addStud(request):
@@ -40,9 +41,14 @@ def addStud(request):
     pass_year = request.POST.get("passyear")
     mobile = request.POST.get("mobile")
     email = request.POST.get("email")
+    department = request.POST.get("department")
 
     st = Student(name=name, roll=roll, city=city, marks=marks,
-                 pass_year=pass_year, mobile=mobile, email=email)
+                 pass_year=pass_year, mobile=mobile, email=email, department_id=department)
     st.save()
     s = Student.objects.all()
     return render(request, "student.html", {'stud': s})
+
+
+def loginUser(request):
+    return render(request, "login.html")

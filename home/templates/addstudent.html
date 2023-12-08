@@ -1,26 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
+  </head>
 
-<body>
-    <h1> Add Student </h1>
+  <body>
+    <h1>Add Student</h1>
 
     <form action="/addstud" method="Post">
-        {% csrf_token %}
-        <input type="number" name="roll" placeholder="Enter Roll">
-        <input type="text" name="name" placeholder="Enter Full Name">
-        <input type="text" name="city" placeholder="Enter City">
-        <input type="number" name="marks" placeholder="Enter Marks">
-        <input type="number" name="passyear" placeholder="Enter Passing Year">
-        <input type="tel" name="mobile" placeholder="Enter Mobile Number">
-        <input type="email" name="email" placeholder="Enter email">
-        <input type="submit" value="Add Student">
-    </form>
-</body>
+      {% csrf_token %}
+      <input type="number" name="roll" placeholder="Enter Roll" />
+      <input type="text" name="name" placeholder="Enter Full Name" />
+      <input type="text" name="city" placeholder="Enter City" />
+      <input type="number" name="marks" placeholder="Enter Marks" />
+      <input type="number" name="passyear" placeholder="Enter Passing Year" />
+      <input type="tel" name="mobile" placeholder="Enter Mobile Number" />
+      <input type="email" name="email" placeholder="Enter email" />
+      <label for="department">Choose a department:</label>
 
+      <select name="department" id="department">
+        {% for dept in departments %}
+        <option value="{{ dept.pk }}">{{ dept.name }}</option>
+        {% endfor %}
+      </select>
+      <input type="submit" value="Add Student" />
+    </form>
+  </body>
 </html>
