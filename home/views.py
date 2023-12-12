@@ -1,3 +1,4 @@
+from django.http import JsonResponse
 from django.shortcuts import render, redirect, HttpResponse
 from home.models import *
 from django.contrib.auth import authenticate, login, logout
@@ -5,8 +6,10 @@ from django.contrib.auth.decorators import login_required
 
 # Create your views here
 
+
 def index(request):
     return render(request, "index.html")
+
 
 @login_required
 def home(request):
@@ -92,3 +95,8 @@ def loginUser(request):
             return render(request, "login.html", {'message': message})
 
     return render(request, "login.html")
+
+
+def demoapi(request):
+
+    return JsonResponse({'message': 'Hello World', 'status': 200, 'data': {'name': 'Rahul', 'age': 20}})

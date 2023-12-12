@@ -30,4 +30,6 @@ urlpatterns = [
     path("login", views.loginUser),
     path("loginUser", views.loginUser),
     path("logout", views.logoutUser),
+    path("demoapi", views.demoapi),
+    path("api/v1/", include("api.urls"))
 ]
