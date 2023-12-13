@@ -16,20 +16,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
-from home import views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    # path("", include("home.urls")),
-    path("", views.index),
-    path("home", views.home),
-    path("about", views.about),
-    path("student", views.student),
-    path("addstudent", views.addStudent),
-    path("addstud", views.addStud),
-    path("login", views.loginUser),
-    path("loginUser", views.loginUser),
-    path("logout", views.logoutUser),
-    path("demoapi", views.demoapi),
-    path("api/v1/", include("api.urls"))
+    path("api/v1/", include("api.apiurls")),
+    path("", include("home.homeurls")),
 ]
