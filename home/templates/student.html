@@ -15,6 +15,7 @@
         <th>Student Name</th>
         <th>City</th>
         <th>Mobile</th>
+        <th>action</th>
       </tr>
       {% for s in stud %}
       <tr>
@@ -22,6 +23,7 @@
         <td>{{ s.name }}</td>
         <td>{{ s.city }}</td>
         <td>{{ s.mobile }}</td>
+        <td><a href="/details/{{ s.roll }}">View More </a></td>
       </tr>
       {% endfor %}
     </table>

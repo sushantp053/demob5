@@ -27,12 +27,6 @@ def student(request):
 
     st = Student.objects.all()
 
-    for s in st:
-        print(s.roll, s.name, s.city)
-    for s in st:
-        if (s.roll != 2):
-            print(s.name)
-
     return render(request=request, template_name="student.html", context={'stud': st})
 
 
@@ -71,7 +65,6 @@ def loginUser(request):
 
     if (request.method == "GET"):
         next = request.GET.get("next")
-        print(next)
         if next != None:
             return render(request, "login.html", {'next': next})
         else:
@@ -81,7 +74,6 @@ def loginUser(request):
         next = request.POST.get("next")
         username = request.POST.get("username")
         password = request.POST.get("password")
-        print(username, password)
         user = authenticate(username=username, password=password)
         if user != None:
             login(request, user)
@@ -100,3 +92,16 @@ def loginUser(request):
 def demoapi(request):
 
     return JsonResponse({'message': 'Hello World', 'status': 200, 'data': {'name': 'Rahul', 'age': 20}})
+
+
+def details(request, id):
+
+    st = Student.objects.get(roll=id)
+    print(st)
+
+    return render(request, "studentdetails.html", {'stud': st})
+
+def edit(request,id):
+    st = Student.objects.get(roll=id)
+    d = Department.objects.all()
+    return render(request, "editstudent.html", {'stud': st, 'departments': d})

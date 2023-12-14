@@ -13,4 +13,6 @@ urlpatterns = [
     path("loginUser", views.loginUser),
     path("logout", views.logoutUser),
     path("demoapi", views.demoapi),
+    path("details/<int:id>", views.details),
+    path("edit/<int:id>", views.edit),
 ]
