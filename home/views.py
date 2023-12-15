@@ -105,3 +105,31 @@ def edit(request,id):
     st = Student.objects.get(roll=id)
     d = Department.objects.all()
     return render(request, "editstudent.html", {'stud': st, 'departments': d})
+
+
+def update(request):
+    roll = request.POST.get("roll")
+    name = request.POST.get("name")
+    city = request.POST.get("city")
+    marks = request.POST.get("marks")
+    pass_year = request.POST.get("passyear")
+    mobile = request.POST.get("mobile")
+    email = request.POST.get("email")
+    department = request.POST.get("department")
+
+    st = Student.objects.get(roll=roll)
+    st.name = name
+    st.city = city
+    st.marks = marks
+    st.pass_year = pass_year
+    st.mobile = mobile
+    st.email = email
+    d = Department.objects.get(id=department)
+    st.department = d
+    st.save()
+    return redirect("/details/"+str(roll))
+
+def delete(request,id):
+    st = Student.objects.get(roll=id)
+    st.delete()
+    return redirect("/student")

@@ -6,20 +6,29 @@
     <title>Edit Student</title>
 </head>
 <body>
-    <form action="/addstud" method="Post">
+    <form action="/update" method="Post">
         {% csrf_token %}
         <h3> {{ stud.roll }} </h3>
-        <input type="text" name="name" placeholder="Enter Full Name" />
-        <input type="text" name="city" placeholder="Enter City" />
-        <input type="number" name="marks" placeholder="Enter Marks" />
-        <input type="number" name="passyear" placeholder="Enter Passing Year" />
-        <input type="tel" name="mobile" placeholder="Enter Mobile Number" />
-        <input type="email" name="email" placeholder="Enter email" />
+        <input type="hidden" name="roll" value="{{ stud.roll }}" />
+        <label for="name">Name:</label>
+        <input type="text" name="name" value="{{ stud.name }}" />
+        <label for="city">City:</label>
+        <input type="text" name="city" value="{{ stud.city }}" />
+        <label for="marks">Marks:</label>
+        <input type="number" name="marks" value="{{stud.marks}}" />
+        <label for="passyear">Passing Year:</label>
+        <input type="number" name="passyear" value="{{ stud.pass_year}}" />
+        <label for="mobile">Mobile:</label>
+        <input type="tel" name="mobile" value="{{ stud.mobile}}" />
+        <label for="email">Email:</label>
+        <input type="email" name="email" value="{{ stud.email}}" />
         <label for="department">Choose a department:</label>
-  
         <select name="department" id="department">
+          <option value="{{ stud.department.pk }}">{{ stud.department.name }}</option>
           {% for dept in departments %}
-          <option value="{{ dept.pk }}">{{ dept.name }}</option>
+          {% if dept.pk != stud.department.pk %}
+            <option value="{{ dept.pk }}">{{ dept.name }}</option>
+          {% endif %}
           {% endfor %}
         </select>
         <input type="submit" value="Save" />

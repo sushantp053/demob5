@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+{% load static %}
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Details</title>
 </head>
 <body>
+
     <h3> Student Roll No: {{ stud.roll }}</h3>
     <h3> Student Name: {{ stud.name }}</h3>
     <h4> Student email: {{ stud.email }}</h4>
@@ -18,8 +20,8 @@
     <h4> Department HOD: {{ stud.department.hod }}</h4>
 
     <a href="/edit/{{ stud.roll }}"><button>edit</button></a>
-    <a href="/deletestudent"><button>delete</button></a>
+    <button onclick="deleteStudent({{stud.roll}})">delete</button>
 
-
+<script src="{% static "edit.js" %}"></script>
 </body>
 </html>
